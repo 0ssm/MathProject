@@ -1,4 +1,15 @@
 /* =================================
+   Reset
+   ================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* =================================
    Background Image
    ================================= */
 
@@ -6,6 +17,12 @@ body {
     position: relative;
     min-height: 100vh;
     background: white;
+
+    /* Overrides LaTeX.css's Computer Modern serif, which gets thin and
+       hard to read at small sizes. Georgia was designed specifically for
+       screen legibility, ships on every OS (no download, no speed cost),
+       and code blocks stay monospace since LaTeX.css sets that separately. */
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body::before {
@@ -123,6 +140,39 @@ body::before {
 
 
 /* =================================
+   Page (the A4 "paper" panel)
+   ================================= */
+
+.page {
+    position: relative;
+    z-index: 1;
+
+    /* Exactly 50% width centered on screen */
+    width: 50vw;
+    max-width: none;
+
+    /* Centers the 50% card by shifting it 25% from the left */
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 70px 0;
+
+    padding: 3rem 3.5rem;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    border-radius: 28px;
+
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.page .subtitle {
+    margin-top: -0.5rem;
+    color: #555;
+}
+
+
+/* =================================
    Mobile
    ================================= */
 
@@ -135,6 +185,11 @@ body::before {
     .site-nav {
         left: 50vw !important;
         transform: translateX(-50%) !important;
+    }
+
+    .page {
+        margin: 90px 16px 40px;
+        padding: 1.5rem 1.25rem;
     }
 
 }
